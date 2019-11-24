@@ -19,9 +19,11 @@
     });
   }
 
-  function onSearchChanged(searchTerm) {
+  function onSearchChanged(event) {
+    const searchTerm = event.detail;
+
     if (searchTerm === "") {
-      this.fetchEmployees();
+      fetchEmployees();
     } else {
       const filteredData = allEmployees.filter(emp =>
         emp.firstName.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
@@ -34,7 +36,7 @@
 </script>
 
 <main>
-	<Header></Header>
+	<Header on:change={onSearchChanged}></Header>
 	<EmployeeList employees={employees}></EmployeeList>
 </main>
 

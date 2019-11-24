@@ -1,16 +1,11 @@
 <script>
-  import {
-    Collapse,
-    Navbar,
-    NavbarBrand,
-    Form,
-    Input
-  } from 'sveltestrap';
+  import { Navbar, NavbarBrand, Form, Input } from 'sveltestrap';
+  import { createEventDispatcher } from 'svelte';
 
-  let isOpen = false;
+  const dispatch = createEventDispatcher();
 
-  function handleUpdate(event) {
-    isOpen = event.detail.isOpen;
+  function onChange(event) {
+    dispatch('change', event.target.value);
   }
 </script>
 
@@ -24,8 +19,8 @@
       name="searchTerm"
       value=""
       placeholder="search..."
-      onChange=""
-      readonly="false"
+      on:keyup={onChange}
+      readonly={false}
     />
   </Form>
   
