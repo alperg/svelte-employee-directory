@@ -2,10 +2,9 @@
   import { Table } from 'sveltestrap';
 
   export let employees;
-  console.log(employees);
 </script>
 
-<Table>
+<Table striped hover>
   <thead>
   <tr>
     <th>#</th>
